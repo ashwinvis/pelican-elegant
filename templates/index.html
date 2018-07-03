@@ -51,10 +51,11 @@
         {% endif %}
         <div class="{{css_class}}">
             <header>
-            <h1 id="about-me">About</h1>
+            <h3 id="about-me">About</h3>
             </header>
             <div class="article-content">
                 {{ LANDING_PAGE_ABOUT.details }}
+		{% include '_includes/social_index.html' %}
             </div>
         </div>
         {% endif %}
@@ -65,12 +66,12 @@
         {% set css_class = 'span4' %}
         {% endif %}
         <div class="{{css_class}}">
-	        {% if LANDING_LOGO_PATH %}
-		        <img src="{{ LANDING_LOGO_PATH }}">
-	        {% endif %}
+	    {% if LANDING_LOGO_PATH %}
+		    <img src="{{ LANDING_LOGO_PATH }}">
+	    {% endif %}
             <header>
-            <h2 id="my-projects">Specialized Packages</h1>
-	        </header>
+            <h2 id="my-projects">Specialized Packages</h2>
+            </header>
             {% for project in PROJECTS %}
             <ul class="list-all-articles">
                 <li>
@@ -90,7 +91,7 @@
     <div class="row-fluid">
         <div class="{{css_class}}">
             <header>
-            <h1 id="recent-posts">Recent Posts <a id="allposts" href="{{ SITEURL }}/archives.html">all posts</a></h1>
+            <h2 id="recent-posts">Recent Posts <a id="allposts" href="{{ SITEURL }}/archives.html">all posts</a></h2>
             </header>
         <div class="recent-posts">
             {% for article in articles %}

@@ -80,19 +80,17 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span1"></div>
-                <div class="span10">
+                <div class="span10 offset1">
                     {% block content %}
                     {% endblock content %}
                 </div>
-                <div class="span1"></div>
             </div>
         </div>
         <div id="push"></div>
     </div>
         {% include '_includes/footer.html' %}
         {% block script %}
-        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
@@ -104,5 +102,5 @@
         {% include '_includes/stat_counter.html' %}
     </body>
     <!-- Theme: Elegant built for Pelican
-    License : https://oncrashreboot.com/pelican-elegant -->
+    License : http://oncrashreboot.com/pelican-elegant -->
 </html>

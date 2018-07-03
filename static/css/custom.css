@@ -1,0 +1,4 @@
+.article-content, div.recent-posts p {
+    font: 1.1em/1.2em 'PT Serif', Georgia, 'Times New Roman', Times, Serif;
+    text-align: justify;
+}
