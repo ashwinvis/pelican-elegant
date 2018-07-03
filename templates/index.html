@@ -51,7 +51,7 @@
         {% endif %}
         <div class="{{css_class}}">
             <header>
-            <h1 id="about-me">About me</h1>
+            <h1 id="about-me">About</h1>
             </header>
             <div class="article-content">
                 {{ LANDING_PAGE_ABOUT.details }}
@@ -65,9 +65,12 @@
         {% set css_class = 'span4' %}
         {% endif %}
         <div class="{{css_class}}">
+	        {% if LANDING_LOGO_PATH %}
+		        <img src="{{ LANDING_LOGO_PATH }}">
+	        {% endif %}
             <header>
-            <h1 id="my-projects">My Projects</h1>
-            </header>
+            <h2 id="my-projects">Specialized Packages</h1>
+	        </header>
             {% for project in PROJECTS %}
             <ul class="list-all-articles">
                 <li>
