@@ -291,6 +291,21 @@ i.sidebar-social-links:hover {
     background-color: #A2A2A2;
     color: #fff;
 }
+i.index-social-links {
+    border-radius: 5%;
+    border: solid transparent 1px;
+    color: #A2A2A2;
+    font-size: 2em;
+    margin: 0;
+    padding: 1px;
+    text-align: center;
+    text-decoration: none;
+    width: 12%;
+}
+i.index-social-links:hover {
+    background-color: #A2A2A2;/* */
+    color: #fff;
+}
 i.fa-twitter:hover, i.fa-twitter-square:hover {
     background-color: #00ACED;
 }
@@ -305,6 +320,9 @@ i.fa-adn:hover {
 }
 i.fa-envelope:hover {
     background-color: #5E9EDA;
+}
+i.fa-comments:hover {
+    background-color: #57BB82;
 }
 i.fa-github:hover, i.fa-github-square:hover, i.fa-github-alt:hover {
     background-color: #000;

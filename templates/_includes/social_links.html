@@ -6,14 +6,17 @@
     {%for item in entry %}
         {# first is for name #}
         {% if loop.first %}
-            {% set link_title = 'My ' + item + ' Profile' %}
+            {% set link_title = item + ' Profile' %}
             {% set link_icon = item.lower() %}
             {% if item.lower() == 'email' %}
-                {% set link_title = 'My ' + item + ' Address' %}
+                {% set link_title = item + ' Address' %}
                 {% set link_icon = 'envelope' %}
             {% elif item.lower() == 'rss' %}
                 {% set link_title = 'Subscribe in a reader' %}
                 {% set link_icon = 'rss' %}
+            {% elif item.lower() == 'chat' %}
+                {% set link_title = 'Reach via instant messaging' %}
+                {% set link_icon = 'comments' %}
             {% endif %}
             {% if f_entry.insert(0, link_title) %}{% endif %}
             {% if f_entry.insert(1, link_icon) %}{% endif %}
