@@ -11,8 +11,8 @@
 {% endblock head_description %}
 
 {% block meta_tags_in_head %}
-{% if article.jump %}
-<meta http-equiv="refresh" content="0;URL={{ article.jump}}" />
+{% if article.redirect %}
+<meta http-equiv="refresh" content="0;URL={{ article.redirect}}" />
 {% endif %}
 {{ super() }}
 {% if article.tags or article.category or article.keywords %}
@@ -22,6 +22,11 @@
 {% from '_includes/smo_metadata.html' import smo_metadata with context %}
 {{ smo_metadata(article) }}
 {% endblock meta_tags_in_head %}
+
+{% block head_links %}
+{{ super() }}
+{% include '_includes/photos_header.html' %}
+{% endblock head_links %}
 
 {% block content %}
 <article itemscope>
@@ -43,10 +48,22 @@
        {% else %}
         <div class="span8 offset2 article-content">
             {% endif %}
-
             {% import '_includes/translations.html' as translations with context %}
             {{ translations.translations_for(article) }}
             {{ article.content }}
+
+            {% if article.photo_gallery %}
+            <div class="gallery">
+                {% for title, gallery in article.photo_gallery %}
+                <h1>{{ title }}</h1>
+                {% for name, photo, thumb, exif, caption in gallery %}
+                <a href="{{ SITEURL }}/{{ photo }}" title="{{ name }}" exif="{{ exif }}" caption="{{ caption }}"><img
+                        src="{{ SITEURL }}/{{ thumb }}"></a>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
             {% from '_includes/article_author.html' import article_author with context %}
             {{ article_author(article) }}
             {% from '_includes/share_links.html' import share_links with context %}
@@ -84,6 +101,7 @@
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
+            {% include '_includes/post_stats.html' %}
             {% if article.date %}
             <h4>Published</h4>
             {% set day = article.date.strftime('%d')|int %}
@@ -108,6 +126,7 @@
             {% endif %}
             {% include '_includes/social_links.html' %}
             {% include '_includes/mailchimp.html' %}
+            {% include '_includes/freelists.html' %}
         </div>
         </section>
 </div>
@@ -118,4 +137,5 @@
     {{ super() }}
     {% from '_includes/comments.html' import comments_script with context %}
     {{ comments_script(article) }}
+    {% include '_includes/photos_footer.html' %}
 {% endblock script %}

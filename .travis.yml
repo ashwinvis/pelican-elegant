@@ -1,33 +1,47 @@
-# Copyright (C) 2017, 2018 Pablo Iranzo Gómez <Pablo.Iranzo@gmail.com>
-
 language: python
 dist: trusty
-sudo: required
 
 python:
-- '3.5'
+- '3.6'
 
-# prepare and move data for execution
+branches:
+  only:
+  - master
+  - next
 
-before_install:
-- pip install -U pip
-- pip install -U setuptools
-- pip install -r tests/requirements.txt
-- pip install -r tests/test-requirements.txt
-- pip install peru
-- mkdir -p tests/themes/elegant
-- mv templates tests/themes/elegant/
-- mv static tests/themes/elegant/
-- cd tests && peru sync 
+addons:
+ apt:
+  packages:
+    - openjdk-8-jre  # install Java8 as required by vnu.jar
+
+cache:
+- pip
+- yarn
+- directories:
+  - $HOME/.cache/pre-commit
+
+install:
+- pip install -r documentation/requirements.txt
+- pip install -U Online-W3C-Validator
+- pip install -U html5validator
+- pip install -U pre-commit
+- yarn global add yaspeller
+- yarn install
 
 before_script:
-- npm install travis-ci
+- cd documentation
+- make plugins-sync
 
 script:
-- pelican content/ -o output/
-- find output/ -name '*.html' -type f -exec w3c_validator '{}' \;
+- pre-commit run --all-files
+- yaspeller --only-errors content/ *.md
+- make publish
+- w3c_validator $(find output/ -name '*.html' -type f)
+- html5validator --root output/
 
-# Notify documentation repo for build new site after master change
-
-after_success:
-- node trigger-build.js
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: yarn semantic-release
+  on:
+    branch: master
