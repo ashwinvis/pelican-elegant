@@ -28,16 +28,16 @@ MARKDOWN = {
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = [
-    "sitemap",
+    "assets",
     "extract_toc",
-    "tipue_search",
+    "just_table",
     "liquid_tags.img",
     "neighbors",
-    "render_math",
     "related_posts",
-    "assets",
-    "share_post",
+    "render_math",
     "series",
+    "share_post",
+    "tipue_search",
 ]
 SITEMAP = {
     "format": "xml",
@@ -69,8 +69,7 @@ SOCIAL = (
     ("RSS", SITEURL + "/feeds/all.atom.xml"),
 )
 
-CLAIM_GOOGLE = "Bk4Z5ucHLyPXqlZlj5LzANpYBBSvxqBW4E8i-Kwf-bQ"
-CLAIM_BING = "8FF1B025212A47B5B27CC47163A042F0"
+CLAIM_BING = "BC16AEBED17872F083B3E1E7A67454BD"
 
 # Elegant theme
 STATIC_PATHS = ["theme/images", "images", "extra/_redirects"]
@@ -83,7 +82,7 @@ else:
     STATIC_PATHS.append("extra/robots_deny.txt")
     EXTRA_PATH_METADATA["extra/robots_deny.txt"] = {"path": "robots.txt"}
 
-DIRECT_TEMPLATES = ("index", "tags", "categories", "archives", "search", "404")
+DIRECT_TEMPLATES = ["index", "tags", "categories", "archives", "search", "404"]
 TAG_SAVE_AS = ""
 AUTHOR_SAVE_AS = ""
 CATEGORY_SAVE_AS = ""
@@ -125,10 +124,24 @@ PROJECTS = [
         "description": "Source code of Elegant theme",
     },
     {
+        "name": "Issue Tracker",
+        "url": "https://github.com/Pelican-Elegant/elegant/issues",
+        "description": "Give your feedback, ask questions or report issues",
+    },
+    {
+        "name": "Roadmap",
+        "url": "https://github.com/Pelican-Elegant/elegant/milestones",
+        "description": "See planned features and estimated release dates",
+    },
+    {
+        "name": "onCrashReboot",
+        "url": "https://www.oncrashreboot.com/",
+        "description": "Home page of Elegant creator and lead developer",
+    },
+    {
         "name": "Pelican",
         "url": "https://github.com/getpelican/pelican/",
-        "description": "Static site generator that supports Markdown and"
-        " reST syntax",
+        "description": "Static site generator that powers Elegant",
     },
     {
         "name": "Pelican Plugins",
@@ -137,9 +150,25 @@ PROJECTS = [
     },
 ]
 
-LANDING_PAGE_ABOUT = {
-    "title": "Elegant – Why it is the Best Pelican Theme",
-    "details": """<p>This page serves both as documentation site and demonstration of Pelican-Elegant theme
-        capabilities and look&amp;feel.</p><p>Please do check our Project pages and browse this site for more information.
-        </p>""",
+LANDING_PAGE_TITLE = "Elegant – Why it is the Best Pelican Theme"
+
+AUTHORS = {
+    "Talha Mansoor": {
+        "url": "https://www.oncrashreboot.com/",
+        "blurb": "is the creator and lead developer of Elegant theme.",
+        "avatar": "/images/avatars/talha131.png",
+    },
+    "Pablo Iranzo Gómez": {
+        "url": "http://iranzo.github.io",
+        "blurb": " opensource enthusiast and Lego fan doing some python simple programs like @redken_bot in telegram, etc",
+        "avatar": "https://avatars.githubusercontent.com/u/312463",
+    },
+    "Jack De Winter": {
+        "url": "http://jackdewinter.github.io",
+        "blurb": "ever evolving, ever learning",
+    },
+    "Matija Šuklje": {
+        "url": "https://matija.suklje.name",
+        "blurb": "FOSS lawyer by trade, hacker by heart.",
+    },
 }
